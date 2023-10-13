@@ -23,11 +23,13 @@ export default function RestaurantCard(restaurantInfo) {
             src={IMG_CDN_URL + cloudinaryImageId}
             alt={name}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to transparent "></div>
           {shouldRenderDiscount && (
-            <h3 className="absolute bottom-1 left-3 font-bold text-white text-xl line-clamp-1">
-              {discountHeader} {discountSubHeader}
-            </h3>
+            <>
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to transparent "></div>
+              <h3 className="absolute bottom-1 left-3 font-bold text-white text-xl line-clamp-1">
+                {discountHeader} {discountSubHeader}
+              </h3>
+            </>
           )}
         </div>
         <div className="ml-3 mt-3">

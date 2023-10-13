@@ -5,7 +5,7 @@ export default function ShimmerUI() {
     <div className="container mx-auto max-w-screen-xl p-6 my-5 flex justify-center">
       <div
         data-testid="shimmer"
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-start gap:6 xl:gap-8 mt-8"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-start gap-6 xl:gap-8 mt-8"
       >
         {Array(12)
           .fill("")

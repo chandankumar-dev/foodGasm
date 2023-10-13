@@ -20,14 +20,17 @@ export default function RestaurantList() {
   async function getRestaurants() {
     const data = await fetch(Resturant_Data_URL);
     const json = await data.json();
+
+    const filteredJson = json?.data?.cards?.filter((restaurant) => {
+      return restaurant?.card?.card?.id === "restaurant_grid_listing";
+    });
+
     setAllRestaurants(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      filteredJson[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurants(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      filteredJson[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-
-    console.log(json?.data?.cards[2]?.card?.card, "console");
   }
 
   // if (!allRestaurants) return null;
