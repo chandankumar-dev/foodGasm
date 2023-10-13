@@ -15,28 +15,28 @@ export default function Header() {
           <AiOutlineMenu className="text-2xl" />
         </button>
         <ul className="hidden lg:flex items-center gap-10 lg:gap-15">
-          <Link>
+          <Link to="/search">
             <li className="flex items-center gap-2 text-lg">
               <BsSearch /> Search
             </li>
           </Link>
-          <Link>
+          <Link to="/offers">
             <li className="flex items-center gap-2 text-lg">
               <TbDiscount2 />
               Offers
             </li>
           </Link>
-          <Link>
+          <Link to="/help">
             <li className="flex items-center gap-2 text-lg">
               <IoHelpBuoyOutline /> Help
             </li>
           </Link>
-          <Link>
+          <Link to="/signin">
             <li className="flex items-center gap-2 text-lg">
               <FaRegUser /> Sign In
             </li>
           </Link>
-          <Link>
+          <Link to="/cart">
             <li className="flex items-center gap-2 text-lg">
               <BsCart /> Cart
             </li>

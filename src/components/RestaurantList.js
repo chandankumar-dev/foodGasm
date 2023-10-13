@@ -13,15 +13,21 @@ export default function RestaurantList() {
     getRestaurants();
   }, []);
 
+  // useEffect(() => {
+  //   console.log(allRestaurants, "all restaurants");
+  // }, [allRestaurants]);
+
   async function getRestaurants() {
     const data = await fetch(Resturant_Data_URL);
     const json = await data.json();
     setAllRestaurants(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurants(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+
+    console.log(json?.data?.cards[2]?.card?.card, "console");
   }
 
   // if (!allRestaurants) return null;
