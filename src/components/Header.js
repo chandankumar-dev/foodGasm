@@ -11,7 +11,7 @@ export default function Header() {
     <div className="shadow-md">
       <div className="container mx-auto max-w-screen-xl flex justify-between p-6">
         <Link to="/">
-          <div className="text-2xl font-bold">FoodGasm</div>
+          <div className="text-2xl font-bold text-orange-500">FoodGasm</div>
         </Link>
         <button className="lg:hidden">
           <AiOutlineMenu className="text-2xl" />
