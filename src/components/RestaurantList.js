@@ -1,39 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import RestaurantCard from "./RestaurantCard";
 import ShimmerUI from "./ShimmerUI";
-import { Resturant_Data_URL } from "../constant";
+import useOnline from "../hooks/useOnline";
 import { filterData } from "../utils/helper";
+import useRestaurantData from "../hooks/useRestaurantData";
 
 export default function RestaurantList() {
-  const [allRestaurants, setAllRestaurants] = useState([]);
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
 
-  useEffect(() => {
-    getRestaurants();
-  }, []);
+  const { allRestaurants, filteredRestaurants, setFilteredRestaurants } =
+    useRestaurantData();
 
-  // useEffect(() => {
-  //   console.log(allRestaurants, "all restaurants");
-  // }, [allRestaurants]);
+  const isOnline = useOnline();
 
-  async function getRestaurants() {
-    const data = await fetch(Resturant_Data_URL);
-    const json = await data.json();
-
-    const filteredJson = json?.data?.cards?.filter((restaurant) => {
-      return restaurant?.card?.card?.id === "restaurant_grid_listing";
-    });
-
-    setAllRestaurants(
-      filteredJson[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilteredRestaurants(
-      filteredJson[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+  if (!isOnline) {
+    return (
+      <div className="h-screen w-screen flex justify-center items-center text-2xl font-bold">
+        Ooops! Looks like you are offline. Please check your internet connection
+      </div>
     );
   }
-
-  // if (!allRestaurants) return null;
 
   return filteredRestaurants?.length === 0 ? (
     <ShimmerUI />
@@ -54,7 +41,7 @@ export default function RestaurantList() {
           data-testid="search-btn"
           className="p-2 m-2 bg-purple-700 hover:bg-gray-500 text-white rounded-md"
           onClick={() => {
-            //need to filter the data
+            // need to filter the data
             const data = filterData(searchText, allRestaurants);
             // update the state - restaurants
             setFilteredRestaurants(data);
@@ -68,10 +55,12 @@ export default function RestaurantList() {
         {/* Write logic for No Restaurant found here */}
         {filteredRestaurants?.map((restaurant) => {
           return (
-            <RestaurantCard
+            <Link
+              to={"/restaurant/" + restaurant.info.id}
               key={restaurant.info.id}
-              restaurantInfo={restaurant.info}
-            />
+            >
+              <RestaurantCard restaurantInfo={restaurant.info} />
+            </Link>
           );
         })}
       </div>

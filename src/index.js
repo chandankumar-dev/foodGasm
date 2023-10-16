@@ -10,6 +10,7 @@ import Signin from "./pages/Signin";
 import Cart from "./pages/Cart";
 import Home from "./pages/Home";
 import Error from "./components/Error";
+import RestaurantMenu from "./components/RestaurantMenu";
 
 const appRouter = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/restaurant/:resId",
+        element: <RestaurantMenu />,
       },
       // {
       //   path: "/about", // parentPath/{path} => localhost:1244/about
