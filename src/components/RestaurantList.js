@@ -25,7 +25,7 @@ export default function RestaurantList() {
   return filteredRestaurants?.length === 0 ? (
     <ShimmerUI />
   ) : (
-    <div className="container mx-auto max-w-screen-xl p-6 my-5 flex flex-col justify-center items-center">
+    <div className="container mx-auto max-w-screen-xl p-6 my-1 flex flex-col justify-center items-center">
       <div>
         <input
           data-testid="search-input"
