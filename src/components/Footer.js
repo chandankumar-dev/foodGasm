@@ -56,9 +56,7 @@ const Footer = () => {
                 {navigation.map((item) => {
                   return (
                     <li className="leading-10" key={item.id}>
-                      <Link to={item.path} className="hover:underline">
-                        {item.title}
-                      </Link>
+                      <Link to={item.path}>{item.title}</Link>
                     </li>
                   );
                 })}
@@ -72,12 +70,7 @@ const Footer = () => {
                 {socialHandles.map((account) => {
                   return (
                     <li className="leading-10" key={account.key}>
-                      <a
-                        href={account.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="hover:underline"
-                      >
+                      <a href={account.url} target="_blank" rel="noreferrer">
                         <span
                           className={`mr-2 fa fa-${account.socialPlatform}`}
                         ></span>
@@ -98,9 +91,7 @@ const Footer = () => {
                 {legalNavigation.map((item) => {
                   return (
                     <li className="mb-4 leading-6" key={item.id}>
-                      <Link to={item.path} className="hover:underline">
-                        {item.title}
-                      </Link>
+                      <Link to={item.path}>{item.title}</Link>
                     </li>
                   );
                 })}

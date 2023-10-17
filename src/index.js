@@ -9,6 +9,9 @@ import Help from "./pages/Help";
 import Signin from "./pages/Signin";
 import Cart from "./pages/Cart";
 import Home from "./pages/Home";
+import Career from "./pages/Career";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 
@@ -41,6 +44,18 @@ const appRouter = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/career",
+        element: <Career />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
       },
       {
         path: "/restaurant/:resId",

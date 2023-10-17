@@ -10,27 +10,17 @@ export const FETCH_RESTAURANT_MENU_URL =
 export const navigation = [
   {
     id: 1,
-    title: "Packages",
-    path: "packages",
-  },
-  {
-    id: 2,
-    title: "Blogs",
-    path: "blogs",
-  },
-  {
-    id: 3,
     title: "Career",
     path: "career",
   },
   {
-    id: 4,
+    id: 2,
     title: "About Us",
-    path: "aboutUs",
+    path: "about",
   },
   {
-    id: 5,
+    id: 3,
     title: "Contact Us",
-    path: "contactUs",
+    path: "contact",
   },
 ];
