@@ -31,7 +31,7 @@ const Footer = () => {
       <div className="hidden md:flex justify-center min-h-[104px] bg-gray-200 mt-6">
         <div className="container flex justify-center items-center">
           <h1 className="md:w-72 md:mr-12 text-2xl font-extrabold my-auto lg:w-[408px] mr-24">
-            For better experience, download the Swiggy app now
+            For better experience, download the FoodGasm app now
           </h1>
           <div className="flex justify-center my-auto mx-2 h-16 gap-5">
             <img

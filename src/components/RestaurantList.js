@@ -39,7 +39,7 @@ export default function RestaurantList() {
         />
         <button
           data-testid="search-btn"
-          className="p-2 m-2 bg-purple-700 hover:bg-gray-500 text-white rounded-md"
+          className="p-2 m-2 bg-orange-500 hover:bg-orange-600 text-white rounded-md"
           onClick={() => {
             // need to filter the data
             const data = filterData(searchText, allRestaurants);
