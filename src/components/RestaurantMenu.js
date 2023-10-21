@@ -105,7 +105,7 @@ const RestaurantMenu = () => {
           {restaurantOffers?.map((restaurant) => {
             return (
               <button
-                className="py-2 px-3 border border-slate-300 rounded-md"
+                className="p-2 border border-slate-300 rounded-md"
                 key={restaurant?.info?.offerIds}
               >
                 {restaurant?.info?.header}
@@ -114,8 +114,11 @@ const RestaurantMenu = () => {
           })}
         </div>
         {/* <div>Veg Only</div> */}
-        {restaurantMenu.map((restaurant, index) => {
-          return <MenuItems key={index} />;
+        {restaurantMenu.map((item, index) => {
+          if (item.card.card.title) {
+            console.log(item.card.card);
+            return <MenuItems key={index} title={item.card.card.title} />;
+          }
         })}
       </div>
     </div>

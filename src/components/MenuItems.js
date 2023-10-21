@@ -42,7 +42,7 @@ function DesktopViewMenuImage() {
   );
 }
 
-export default function MenuItems() {
+export default function MenuItems({ title }) {
   const [isVisible, setIsVisible] = useState(false);
 
   return (
@@ -51,7 +51,7 @@ export default function MenuItems() {
         className="flex justify-between cursor-pointer my-2"
         onClick={() => setIsVisible(!isVisible)}
       >
-        <h3 className="text-lg">Accordion 1</h3>
+        <h3 className="text-lg font-semibold">{title}</h3>
         {isVisible ? (
           <MdKeyboardArrowUp size={30} />
         ) : (
