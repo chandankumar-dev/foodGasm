@@ -7,6 +7,7 @@ const useRestaurantData = () => {
 
   useEffect(() => {
     getRestaurants();
+    window.scrollTo(0, 0);
   }, []);
 
   async function getRestaurants() {
