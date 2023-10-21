@@ -29,7 +29,7 @@ const Footer = () => {
   return (
     <>
       <div className="hidden md:flex justify-center min-h-[104px] bg-gray-200 mt-6">
-        <div className="container flex justify-center items-center">
+        <div className="container flex justify-center items-center p-2">
           <h1 className="md:w-72 md:mr-12 text-2xl font-extrabold my-auto lg:w-[408px] mr-24">
             For better experience, download the FoodGasm app now
           </h1>
@@ -100,7 +100,8 @@ const Footer = () => {
           </div>
           <hr className="w-full my-6 border-gray-500 sm:mx-auto dark:border-gray-700 lg:my-8" />
           <div className="text-gray-400 mb-4 text-center">
-            © {new Date().getFullYear()} foodGasm · All rights reserved.
+            {new Date().getFullYear()} · foodGasm · No copyright © issues. Feel
+            free to copy. If you need any help, ping me !
           </div>
         </div>
       </footer>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { BsSearch, BsCart } from "react-icons/bs";
 import { TbDiscount2 } from "react-icons/tb";
@@ -6,9 +6,13 @@ import { IoHelpBuoyOutline } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
 import { MdOutlineClose } from "react-icons/md";
+import UserContext from "../context/UserContext";
 
 export default function Header() {
   const [toggleMenu, setToggleMenu] = useState(false);
+  // const {
+  //   user: { name, email },
+  // } = useContext(UserContext);
 
   const handleToggle = () => {
     setToggleMenu(!toggleMenu);
@@ -57,12 +61,16 @@ export default function Header() {
               <BsCart /> Cart
             </li>
           </Link>
+          {/* <li className="flex flex-col">
+            <span className="capitalize">{name}</span>
+            <span>{email}</span>
+          </li> */}
         </ul>
         {toggleMenu && (
           <div
             className={`md:hidden fixed top-[75px] right-0 h-full w-3/4 bg-white shadow-lg overflow-y-auto z-[1000] transform transition-all duration-30000s`}
           >
-            <ul className="my-6 space-y-4 text-lg cursor-pointer">
+            <ul className="my-6 space-y-4 text-lg">
               <li className="px-4 py-2 border-b">
                 <Link
                   to="/search"
