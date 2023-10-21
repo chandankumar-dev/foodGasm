@@ -7,13 +7,11 @@ import store from "./store/store";
 
 function App() {
   return (
-    // <Provider store={store}>
-    <>
+    <Provider store={store}>
       <Header />
       <Outlet />
       <Footer />
-    </>
-    // </Provider>
+    </Provider>
   );
 }
 
