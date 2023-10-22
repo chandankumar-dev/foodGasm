@@ -16,15 +16,35 @@ const useRestaurant = (resId) => {
     try {
       const data = await fetch(FETCH_RESTAURANT_MENU_URL + resId);
       const restaurantMenuJson = await data.json();
-      console.log();
-      setRestaurantInfo(restaurantMenuJson?.data?.cards[0]?.card?.card?.info);
+
+      const selectRestaurantInfo = restaurantMenuJson?.data?.cards?.filter(
+        (restaurant) => {
+          if (restaurant?.card?.card?.hasOwnProperty("info")) {
+            return restaurant;
+          }
+        }
+      );
+
+      const selectOffers = restaurantMenuJson?.data?.cards?.filter((item) => {
+        if (item?.card?.card?.id === "offerCollectionWidget_UX4") {
+          return item;
+        }
+      });
+
+      const selectRestaurantMenu = restaurantMenuJson?.data?.cards?.filter(
+        (restaurant) => {
+          if (restaurant.hasOwnProperty("groupedCard")) {
+            return restaurant;
+          }
+        }
+      );
+
+      setRestaurantInfo(selectRestaurantInfo[0]?.card?.card?.info);
       setRestaurantOffers(
-        restaurantMenuJson?.data?.cards[1]?.card?.card?.gridElements
-          ?.infoWithStyle?.offers
+        selectOffers[0]?.card?.card?.gridElements?.infoWithStyle?.offers
       );
       setRestaurantMenu(
-        restaurantMenuJson?.data?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR
-          ?.cards
+        selectRestaurantMenu[0]?.groupedCard?.cardGroupMap?.REGULAR?.cards
       );
     } catch (err) {
       console.log(err);
