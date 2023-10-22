@@ -116,7 +116,9 @@ const RestaurantMenu = () => {
         {/* <div>Veg Only</div> */}
         {restaurantMenu?.map((item, index) => {
           if (item?.card?.card?.title) {
-            return <MenuItems key={index} title={item.card.card.title} />;
+            return (
+              <MenuItems key={index} restaurantMenuItem={item.card.card} />
+            );
           }
         })}
       </div>

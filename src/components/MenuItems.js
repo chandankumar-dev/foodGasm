@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 import { IMG_CDN_URL } from "../constant";
 
-function MobileViewMenuImage() {
+function MobileViewMenuImage({ imageId }) {
   return (
     <div className="sm:hidden">
       <div className="flex flex-col items-center">
         <img
-          src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/druwjzmfmz7qvepq3bkr"
-          className="h-24 w-28 border border-[#d4d5d9] rounded-lg shadow-md"
+          src={IMG_CDN_URL + imageId}
+          className="h-24 w-28 border border-[#d4d5d9] rounded-lg"
           alt="menuItem"
         />
         <button
           data-testid="addBtn"
-          className="px-6 py-2 bg-white text-green-500 rounded-lg cursor-pointer"
+          className="px-6 py-1 bg-white text-green-500 rounded-lg shadow-md cursor-pointer"
         >
           Add
         </button>
@@ -22,11 +22,11 @@ function MobileViewMenuImage() {
   );
 }
 
-function DesktopViewMenuImage() {
+function DesktopViewMenuImage({ imageId }) {
   return (
     <div className="hidden sm:flex relative">
       <img
-        src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/druwjzmfmz7qvepq3bkr"
+        src={IMG_CDN_URL + imageId}
         className="h-24 w-[118px] border border-[#d4d5d9] rounded-lg shadow-md"
         alt="menuItem"
       />
@@ -42,8 +42,10 @@ function DesktopViewMenuImage() {
   );
 }
 
-export default function MenuItems({ title }) {
-  const [isVisible, setIsVisible] = useState(false);
+export default function MenuItems({ restaurantMenuItem }) {
+  const [isVisible, setIsVisible] = useState(true);
+
+  const { title, itemCards } = restaurantMenuItem;
 
   return (
     <div className="my-6">
@@ -58,28 +60,31 @@ export default function MenuItems({ title }) {
           <MdKeyboardArrowDown size={30} />
         )}
       </div>
-      {isVisible && (
-        <div className="my-2">
-          <div className="flex justify-between">
-            <div>
-              <MobileViewMenuImage />
-              <h3 className="text-sm mr-1 sm:text-base font-medium text-[#3e4152] break-words">
-                Paneer 65
-              </h3>
-              <span className="mr-2 font-normal text-[#3e4152] text-sm">
-                Rs 200
-              </span>
-              <div className=" mt-3 text-[#282c3f73] text-sm overflow-x-auto max-w-md md:max-w-xl">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptates dolore esse dolorum vitae atque consequatur
-                consectetur explicabo nihil deserunt eaque.
+      {isVisible &&
+        itemCards?.map((item) => {
+          const { id, name, price, description, imageId, defaultPrice } =
+            item?.card?.info;
+          return (
+            <div key={id} className="my-2">
+              <div className="flex justify-between">
+                <div>
+                  <MobileViewMenuImage imageId={imageId} />
+                  <h3 className="text-sm mr-1 sm:text-base font-medium text-[#3e4152] break-words">
+                    {name}
+                  </h3>
+                  <span className="mr-2 font-normal text-[#3e4152] text-sm">
+                    Rs {Math.round(price / 100 || defaultPrice / 100)}
+                  </span>
+                  <div className=" mt-3 text-[#282c3f73] text-sm overflow-x-auto max-w-md md:max-w-xl">
+                    {description}
+                  </div>
+                </div>
+                <DesktopViewMenuImage imageId={imageId} />
               </div>
+              <hr className="border-dotted my-4" />
             </div>
-            <DesktopViewMenuImage />
-          </div>
-          <hr className="border-dotted my-4" />
-        </div>
-      )}
+          );
+        })}
     </div>
   );
 }
