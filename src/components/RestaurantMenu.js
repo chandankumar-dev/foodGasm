@@ -13,7 +13,7 @@ const RestaurantMenu = () => {
   const { restaurantInfo, restaurantMenu, restaurantOffers } =
     useRestaurantMenu(resId);
 
-  return !restaurantInfo ? (
+  return !restaurantInfo || !restaurantMenu ? (
     <ShimmerUI />
   ) : (
     <div className="container max-w-[800px] mt-5 mx-auto">
@@ -116,7 +116,7 @@ const RestaurantMenu = () => {
         {/* <div>Veg Only</div> */}
         {restaurantMenu.map((item, index) => {
           if (item.card.card.title) {
-            console.log(item.card.card);
+            // console.log(item.card.card.title);
             return <MenuItems key={index} title={item.card.card.title} />;
           }
         })}

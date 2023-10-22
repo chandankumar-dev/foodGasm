@@ -23,7 +23,7 @@ const useRestaurant = (resId) => {
           ?.infoWithStyle?.offers
       );
       setRestaurantMenu(
-        restaurantMenuJson?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR
+        restaurantMenuJson?.data?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR
           ?.cards
       );
     } catch (err) {
