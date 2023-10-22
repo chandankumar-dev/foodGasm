@@ -7,9 +7,11 @@ import { FaRegUser } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
 import { MdOutlineClose } from "react-icons/md";
 import UserContext from "../context/UserContext";
+import { useSelector } from "react-redux";
 
 export default function Header() {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const cartItems = useSelector((store) => store.cart.items);
   // const {
   //   user: { name, email },
   // } = useContext(UserContext);
@@ -36,29 +38,29 @@ export default function Header() {
 
         <ul className="hidden md:flex items-center gap-10 lg:gap-15">
           <Link to="/search">
-            <li className="flex items-center gap-2 text-lg">
+            <li className="flex items-center gap-2 text-lg hover:text-orange-400">
               <BsSearch /> Search
             </li>
           </Link>
           <Link to="/offers">
-            <li className="flex items-center gap-2 text-lg">
+            <li className="flex items-center gap-2 text-lg hover:text-orange-400">
               <TbDiscount2 />
               Offers
             </li>
           </Link>
           <Link to="/help">
-            <li className="flex items-center gap-2 text-lg">
+            <li className="flex items-center gap-2 text-lg hover:text-orange-400">
               <IoHelpBuoyOutline /> Help
             </li>
           </Link>
           <Link to="/signin">
-            <li className="flex items-center gap-2 text-lg">
+            <li className="flex items-center gap-2 text-lg hover:text-orange-400">
               <FaRegUser /> Sign In
             </li>
           </Link>
           <Link to="/cart">
-            <li className="flex items-center gap-2 text-lg">
-              <BsCart /> Cart
+            <li className="flex items-center gap-2 text-lg hover:text-orange-400">
+              <BsCart /> Cart {`(${cartItems.length})`}
             </li>
           </Link>
           {/* <li className="flex flex-col">

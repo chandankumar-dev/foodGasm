@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 import { IMG_CDN_URL } from "../constant";
+import { useDispatch } from "react-redux";
+import { addItem } from "../store/cartSlice";
 
-function MobileViewMenuImage({ item, imageId }) {
+function MobileViewMenuImage({ item, imageId, addItemToCart }) {
   return (
     <div className="sm:hidden">
       <div className="flex flex-col items-center">
@@ -14,6 +16,7 @@ function MobileViewMenuImage({ item, imageId }) {
         <button
           data-testid="addBtn"
           className="px-6 py-1 bg-white text-green-500 rounded-lg shadow-md cursor-pointer"
+          onClick={() => addItemToCart(item)}
         >
           Add
         </button>
@@ -22,7 +25,7 @@ function MobileViewMenuImage({ item, imageId }) {
   );
 }
 
-function DesktopViewMenuImage({ item, imageId }) {
+function DesktopViewMenuImage({ item, imageId, addItemToCart }) {
   return (
     <div className="hidden sm:flex relative">
       <img
@@ -34,6 +37,7 @@ function DesktopViewMenuImage({ item, imageId }) {
         <button
           data-testid="addBtn"
           className=" text-[#60b246] w-full g-full cursor-pointer"
+          onClick={() => addItemToCart(item)}
         >
           Add
         </button>
@@ -46,6 +50,12 @@ export default function MenuCard({ restaurantMenuItem }) {
   const [isVisible, setIsVisible] = useState(true);
 
   const { title, itemCards } = restaurantMenuItem;
+
+  const dispatch = useDispatch();
+
+  const addItemToCart = (menuItem) => {
+    dispatch(addItem(menuItem));
+  };
 
   return (
     <div className="my-6">
@@ -69,7 +79,11 @@ export default function MenuCard({ restaurantMenuItem }) {
             <div key={id} className="my-2">
               <div className="flex justify-between">
                 <div>
-                  <MobileViewMenuImage item={item} imageId={imageId} />
+                  <MobileViewMenuImage
+                    item={item?.card?.info}
+                    imageId={imageId}
+                    addItemToCart={addItemToCart}
+                  />
                   <h3 className="text-sm mr-1 sm:text-base font-medium text-[#3e4152] break-words">
                     {name}
                   </h3>
@@ -80,7 +94,11 @@ export default function MenuCard({ restaurantMenuItem }) {
                     {description}
                   </div>
                 </div>
-                <DesktopViewMenuImage item={item} imageId={imageId} />
+                <DesktopViewMenuImage
+                  item={item?.card?.info}
+                  imageId={imageId}
+                  addItemToCart={addItemToCart}
+                />
               </div>
               <hr className="border-dotted my-4" />
             </div>
