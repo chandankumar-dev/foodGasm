@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 import { IMG_CDN_URL } from "../constant";
 
-function MobileViewMenuImage({ imageId }) {
+function MobileViewMenuImage({ item, imageId }) {
   return (
     <div className="sm:hidden">
       <div className="flex flex-col items-center">
@@ -22,7 +22,7 @@ function MobileViewMenuImage({ imageId }) {
   );
 }
 
-function DesktopViewMenuImage({ imageId }) {
+function DesktopViewMenuImage({ item, imageId }) {
   return (
     <div className="hidden sm:flex relative">
       <img
@@ -42,7 +42,7 @@ function DesktopViewMenuImage({ imageId }) {
   );
 }
 
-export default function MenuItems({ restaurantMenuItem }) {
+export default function MenuCard({ restaurantMenuItem }) {
   const [isVisible, setIsVisible] = useState(true);
 
   const { title, itemCards } = restaurantMenuItem;
@@ -53,7 +53,7 @@ export default function MenuItems({ restaurantMenuItem }) {
         className="flex justify-between cursor-pointer my-2"
         onClick={() => setIsVisible(!isVisible)}
       >
-        <h3 className="text-lg font-semibold">{title}</h3>
+        <h3 className="text-lg font-semibold">{`${title} (${itemCards?.length})`}</h3>
         {isVisible ? (
           <MdKeyboardArrowUp size={30} />
         ) : (
@@ -64,11 +64,12 @@ export default function MenuItems({ restaurantMenuItem }) {
         itemCards?.map((item) => {
           const { id, name, price, description, imageId, defaultPrice } =
             item?.card?.info;
+
           return (
             <div key={id} className="my-2">
               <div className="flex justify-between">
                 <div>
-                  <MobileViewMenuImage imageId={imageId} />
+                  <MobileViewMenuImage item={item} imageId={imageId} />
                   <h3 className="text-sm mr-1 sm:text-base font-medium text-[#3e4152] break-words">
                     {name}
                   </h3>
@@ -79,7 +80,7 @@ export default function MenuItems({ restaurantMenuItem }) {
                     {description}
                   </div>
                 </div>
-                <DesktopViewMenuImage imageId={imageId} />
+                <DesktopViewMenuImage item={item} imageId={imageId} />
               </div>
               <hr className="border-dotted my-4" />
             </div>

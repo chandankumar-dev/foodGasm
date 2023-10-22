@@ -3,7 +3,7 @@ import { IMG_CDN_URL } from "../constant";
 import ShimmerUI from "./ShimmerUI";
 import useRestaurantMenu from "../hooks/useRestaurantMenu";
 import { AiOutlineSearch, AiOutlineHeart } from "react-icons/ai";
-import MenuItems from "./MenuItems";
+import MenuCard from "./MenuCard";
 
 const RestaurantMenu = () => {
   // this is how we can read the dynamic URL
@@ -12,6 +12,10 @@ const RestaurantMenu = () => {
 
   const { restaurantInfo, restaurantMenu, restaurantOffers } =
     useRestaurantMenu(resId);
+
+  const filteredItemCards = restaurantMenu?.filter((item) => {
+    return item?.card?.card?.hasOwnProperty("itemCards");
+  });
 
   return !restaurantInfo || !restaurantMenu ? (
     <ShimmerUI />
@@ -114,11 +118,9 @@ const RestaurantMenu = () => {
           })}
         </div>
         {/* <div>Veg Only</div> */}
-        {restaurantMenu?.map((item, index) => {
+        {filteredItemCards?.map((item, index) => {
           if (item?.card?.card?.title) {
-            return (
-              <MenuItems key={index} restaurantMenuItem={item.card.card} />
-            );
+            return <MenuCard key={index} restaurantMenuItem={item.card.card} />;
           }
         })}
       </div>

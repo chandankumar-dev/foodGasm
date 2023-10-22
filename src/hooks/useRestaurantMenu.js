@@ -19,23 +19,17 @@ const useRestaurant = (resId) => {
 
       const selectRestaurantInfo = restaurantMenuJson?.data?.cards?.filter(
         (restaurant) => {
-          if (restaurant?.card?.card?.hasOwnProperty("info")) {
-            return restaurant;
-          }
+          return restaurant?.card?.card?.hasOwnProperty("info");
         }
       );
 
       const selectOffers = restaurantMenuJson?.data?.cards?.filter((item) => {
-        if (item?.card?.card?.id === "offerCollectionWidget_UX4") {
-          return item;
-        }
+        return item?.card?.card?.id === "offerCollectionWidget_UX4";
       });
 
       const selectRestaurantMenu = restaurantMenuJson?.data?.cards?.filter(
         (restaurant) => {
-          if (restaurant.hasOwnProperty("groupedCard")) {
-            return restaurant;
-          }
+          return restaurant.hasOwnProperty("groupedCard");
         }
       );
 
