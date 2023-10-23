@@ -7,6 +7,9 @@ export const Resturant_Data_URL =
 export const FETCH_RESTAURANT_MENU_URL =
   "https://corsproxy.io/?https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.7255806&lng=77.2448204&restaurantId=";
 
+export const FETCH_HELP_FAQ_URL =
+  "https://corsproxy.io/?https://www.swiggy.com/dapi/support/issues/faq?";
+
 export const navigation = [
   {
     id: 1,

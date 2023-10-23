@@ -11,7 +11,7 @@ export default function ShimmerUI() {
           .fill("")
           .map((e, index) => (
             <div
-              className=" animate-pulse w-56 h-80 min-w-[250px] max-h-[400px]"
+              className="animate-pulse w-56 h-80 min-w-[250px] max-h-[400px]"
               key={index}
             >
               <div className="bg-gray-400 rounded-lg m-2 h-2/4"></div>

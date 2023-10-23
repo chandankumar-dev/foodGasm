@@ -1,19 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import FoodItem from "../components/FoodItem";
-import { clearCart, removeItem } from "../store/cartSlice";
 
 export default function Cart() {
   const cartItems = useSelector((store) => store.cart.items);
-  const dispatch = useDispatch();
 
-  const handleRemoveItem = (item) => {
-    dispatch(removeItem(item));
-  };
-  const handleClearCart = () => {
-    dispatch(clearCart());
-  };
   return (
     <div className="container mx-auto max-w-[800px] flex justify-between p-6">
       {cartItems.length !== 0 ? (

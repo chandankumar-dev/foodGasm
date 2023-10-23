@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IMG_CDN_URL } from "../constant";
 import { addItem, clearCart, decreamentItem } from "../store/cartSlice";
-import { useLocation } from "react-router-dom";
 
 export default function FoodItem() {
   const cartItems = useSelector((store) => store.cart.items);
@@ -23,7 +22,8 @@ export default function FoodItem() {
 
   const getTotal = () => {
     const total = cartItems.reduce(
-      (sum, current) => sum + current.price * current.quantity,
+      (sum, current) =>
+        sum + (current.price || current.defaultPrice) * current.quantity,
       0.0
     );
     return total;
@@ -31,8 +31,6 @@ export default function FoodItem() {
   const handleClearCart = () => {
     disptach(clearCart());
   };
-
-  //   const url = useLocation();
 
   return (
     <div className="w-100% sm:h-[calc(100vh-80px)] flex md:items-center flex-col justify-center my-0 mx-auto md:text-center">
@@ -77,7 +75,9 @@ export default function FoodItem() {
                 </div>
                 <div className="w-14 font-medium flex justify-center">
                   <span className="text-lg">
-                    &#8377;{(item.price + 0.0) / 100}
+                    &#8377;
+                    {(item.price + 0.0) / 100 ||
+                      (item.defaultPrice + 0.0) / 100}
                   </span>
                 </div>
               </div>
