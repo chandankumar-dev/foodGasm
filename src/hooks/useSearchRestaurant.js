@@ -23,6 +23,8 @@ const useSearchRestaurant = (queryText) => {
         const data = await fetch(SEARCH_RESTAURANT_FOOD_URL + queryText);
         const searchResults = await data.json();
         setSearchSuggestions(searchResults?.data?.suggestions);
+      } else if (queryText === "") {
+        setSearchSuggestions(null);
       }
     } catch (err) {
       console.log(err);

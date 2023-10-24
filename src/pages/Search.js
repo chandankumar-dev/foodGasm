@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import useSearchRestaurant from "../hooks/useSearchRestaurant";
 import { SEARCH_PRE_LIST_IMAGE_URL } from "../constant";
 
@@ -12,10 +12,6 @@ export default function Search() {
 
   const { preSearchCuisine, searchSuggestions } =
     useSearchRestaurant(queryText);
-
-  useEffect(() => {
-    console.log(searchSuggestions);
-  }, [searchSuggestions]);
 
   return (
     <div className="container min-h-[50vh] mx-auto max-w-screen-xl p-6">
@@ -41,7 +37,28 @@ export default function Search() {
         </button>
       </div>
       {searchSuggestions ? (
-        <div></div>
+        searchSuggestions?.map((suggestion) => {
+          return (
+            <div
+              key={suggestion?.cloudinaryId}
+              className="flex items-center gap-3 my-4 hover:bg-gray-300 rounded-md"
+            >
+              <img
+                className="h-20 w-20 rounded-md"
+                src={SEARCH_PRE_LIST_IMAGE_URL + suggestion?.cloudinaryId}
+                alt="rice"
+              />
+              <div>
+                <h3 className="text-lg md:text-xl font-semibold">
+                  {suggestion?.text}
+                </h3>
+                <p className={`text-${suggestion?.tagToDisplayColor}`}>
+                  {suggestion?.tagToDisplay}
+                </p>
+              </div>
+            </div>
+          );
+        })
       ) : (
         <div className="my-5 flex flex-col items-center">
           <h3 className="text-2xl font-semibold">Popular Cuisines</h3>

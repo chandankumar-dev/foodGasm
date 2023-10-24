@@ -20,7 +20,7 @@ export const SEARCH_RESTAURANT_FOOD_URL =
   "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/search/suggest?lat=28.7093202&lng=77.21384429999999&str=";
 
 export const SEARCH_PRE_LIST_IMAGE_URL =
-  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/";
+  "https://media-assets.swiggy.com/swiggy/image/upload/";
 
 export const navigation = [
   {
