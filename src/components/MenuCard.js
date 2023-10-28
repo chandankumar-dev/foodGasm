@@ -35,8 +35,8 @@ export default function MenuCard({ restaurantMenuItem }) {
 
           return (
             <div key={id} className="my-2">
-              <div className="flex justify-between">
-                <div>
+              <div className="flex justify-between items-center p-3">
+                <div className="w-[80%] mr-1">
                   <h3 className="text-sm mr-1 sm:text-base font-medium text-[#3e4152] break-words">
                     {name}
                   </h3>
@@ -50,7 +50,7 @@ export default function MenuCard({ restaurantMenuItem }) {
                 <div className="relative">
                   <img
                     src={IMG_CDN_URL + imageId}
-                    className="h-24 w-28 border border-[#d4d5d9] rounded-lg shadow-md"
+                    className="h-24 w-20 sm:w-28 border border-[#d4d5d9] rounded-lg shadow-md"
                     alt="menuItem"
                   />
                   <div className="absolute inset-0 left-1/2 top-20 -translate-x-1/2 grid item-center w-20 md:w-24 h-9 rounded-lg text-sm font-semibold bg-white text-center border shadow-md">
